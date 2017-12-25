@@ -27,8 +27,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-set textwidth=155
-
+set lbr
+" Makefiles need tabs
+autocmd FileType make set noexpandtab
 " enable syntax highlighting
 let python_highlight_all=1
 syntax on 
@@ -44,6 +45,7 @@ set incsearch
 
 " Close autocomplete window oncw you are done with it
 let g:ycm_autoclose_preview_window_after_completion=1
+au FileType perl set filetype=prolog
 " Enhanced keyboard mappings
 "
 " in normal mode F2 will save the file
