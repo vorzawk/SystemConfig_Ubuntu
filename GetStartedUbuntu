@@ -7,3 +7,6 @@ sudo apt-get install nvidia-current
 sudo apt-get install linux-headers-generic
 * Install vim
 * Get a nice wallpaper
+
+Configure system to "sleep" when power button is pressed:
+gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
