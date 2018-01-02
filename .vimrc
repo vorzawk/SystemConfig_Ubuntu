@@ -18,6 +18,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,6 +46,14 @@ set incsearch
 
 " Close autocomplete window oncw you are done with it
 let g:ycm_autoclose_preview_window_after_completion=1
+"Youcompleteme fix, make sure to include the file in ~
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" YCM even while writing comments
+let g:ycm_complete_in_comments = 1
+" Fix annoying 'do you want to load this file?' msg, just remember that ycm
+" starts with the current folder and looks for .ycm_extra_config.py
+" recursively till ~
+let g:ycm_confirm_extra_conf = 0
 au FileType perl set filetype=prolog
 " Enhanced keyboard mappings
 "

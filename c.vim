@@ -3,6 +3,8 @@ setl softtabstop=4
 setl shiftwidth=4
 setl textwidth=79 
 " ^ helps while using vertical splits to view multiple code files
+setl fo+=t
+" required for textwidth
 setl expandtab
 setl autoindent
 setl fileformat=unix 
