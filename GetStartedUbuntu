@@ -1,14 +1,18 @@
 Some general tips : creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!). So, plan accordingly and try to "optimize" the movements of the partition with the end goal in mind. Remember, a hard disk can have 4 primary partitions, one of which can be an extended partition which can be partitioned as many times as needed.
 First, use rufus to create a live usb of the latest ubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 Then,
-* The n5110 laptop is not well supported by nVidia, so the best thing to do is to install nvidia-prime and switch to the intel GPU manually.
+
+* It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel and the nVidia GPUs as needed. However, only proprietary drivers are available which can only control the nvidia graphics card! So, the solution is to disable the nvidia card altogether coz using the nouveau drivers makes too much noise ... Run the command below to install the nVidia driver and then enable the Intel GPU using the XServer setting.
 sudo apt-get install nvidia-current
 
 * Install vim
-Check vin --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
+  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
+  - Install vundle for the plugins
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  - ycmd requires some extra config
+  - copy language specific setting to .vim folder
+* Get a nice wallpaper
 
 * Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
 * Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done in the repo.
-
-Configure system to "sleep" when power button is pressed:
-gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
+* Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
