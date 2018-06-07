@@ -2,8 +2,18 @@ Some general tips : creating hard disk partitions takes a long time since every 
 First, use rufus to create a live usb of the latest ubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 Then,
 
-* It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel and the nVidia GPUs as needed. However, only proprietary drivers are available which can only control the nvidia graphics card! So, the solution is to disable the nvidia card altogether coz using the nouveau drivers makes too much noise ... Run the command below to install the nVidia driver and then enable the Intel GPU using the XServer setting.
-sudo apt-get install nvidia-current
+Note : XOrg is the server which is responsible for reating the graphical environment.
+* Figure out how to get the graphics working
+It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel
+and the nVidia GPUs as needed. The proprietary drivers available can only control the nvidia graphics card! The alternatives are to either
+use the open source nouveau drivers or keep both intel and nvidia cards on all the time. The open source drivers are not very good and in
+both cases, the fan noise due to the overheating system is unbearable!
+One solution is the nvidia-prime which allows for starting the XOrg session with either the Intel or the
+NVidia cards. I used nvidia-prime to disable the NVidia drivers since I don't really play any games, until one day the GUI simply refused to
+bootup! Now I am using bumblebee which manages everything automatically, checks if the application can benefit from using the NVidia card
+and starts a new XOrg instance to support it. The default setting is to use the Intel Graphics card so there is no overheating problem.
+- Install Bumblebee for Hybrid Graphics
+sudo apt-get install bumblebee bumblebee-nvidia primus linux-headers-generic
 
 * Install vim
   - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.

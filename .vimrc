@@ -27,6 +27,9 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set textwidth=140
+" you should probably look at only one piece of code at a time, 80 is such a
+" ridiculous number
 set autoindent
 set lbr
 " Makefiles need tabs
@@ -60,7 +63,7 @@ au FileType perl set filetype=prolog
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
-imap <F2> <ESC>:w<CR>i
+imap <F2> <ESC>:w<CR>
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
