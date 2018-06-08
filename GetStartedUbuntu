@@ -8,12 +8,11 @@ It looks like my n5110 laptop isn't supported well by nvidia. The problem is the
 and the nVidia GPUs as needed. The proprietary drivers available can only control the nvidia graphics card! The alternatives are to either
 use the open source nouveau drivers or keep both intel and nvidia cards on all the time. The open source drivers are not very good and in
 both cases, the fan noise due to the overheating system is unbearable!
-One solution is the nvidia-prime which allows for starting the XOrg session with either the Intel or the
-NVidia cards. I used nvidia-prime to disable the NVidia drivers since I don't really play any games, until one day the GUI simply refused to
-bootup! Now I am using bumblebee which manages everything automatically, checks if the application can benefit from using the NVidia card
-and starts a new XOrg instance to support it. The default setting is to use the Intel Graphics card so there is no overheating problem.
-- Install Bumblebee for Hybrid Graphics
-sudo apt-get install bumblebee bumblebee-nvidia primus linux-headers-generic
+One solution is to use Bumblebee which allows for running apps via optirun or primusrun so that these apps can make use of the GPU card. But
+since I don't really play any games, this is not really what I need. I can use nvidia-prime which allows for starting the XOrg session with
+either the Intel or the NVidia cards.
+- Install the nvidia drivers and nvidia-prime, then select the intel card using the command below.
+sudo prime-select intel
 
 * Install vim
   - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
