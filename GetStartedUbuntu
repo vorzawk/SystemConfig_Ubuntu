@@ -17,6 +17,9 @@ nor nvidia drivers are loaded.
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 * Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
+* Run the following, to overcome the publishing private email problem
+git config --global user.name "vorzawk"
+git config --global user.email 21965736+vorzawk@users.noreply.github.com
 * Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done in the repo.
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
 
