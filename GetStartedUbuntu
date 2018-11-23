@@ -1,6 +1,7 @@
-It seems to be a undeniable need for me to have to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape
-through the internet and reinvent the wheel every time, I am making this document so that I have clear instrutions to get up and running
-quickly!
+I seem to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape
+through the internet to figure things out every time, I am making this document to aggregate all instructions in one place.
+Still, make sure that you can spare a few hours, if and when you decide to upgrade!
+
 Some general tips : creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!). So, plan accordingly and try to "optimize" the movements of the partition with the end goal in mind. Remember, a hard disk can have 4 primary partitions, one of which can be an extended partition which can be partitioned as many times as needed.
 First, use rufus to create a live usb of the latest ubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 Then,
@@ -11,16 +12,18 @@ For some reason, my laptop seemed to really heat up while using 18.04. Reverting
 have solved the problem. The output of sensors shows that all temperatures are less than 50 Celsius and lsmod shows that neither the nouveau
 nor nvidia drivers are loaded.
 
-* Install vim
-  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
+* Install and configure vim
   - Install vundle for the plugins
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
+  - Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done
+    in one location.
+  - Make sure to run :PluginInstall to install the plugins while running vim for the very first time!
+  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the
+    system clipboard from vim.
 * Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
-* Run the following, to overcome the publishing private email problem
+* Run the following, to overcome the publishing private email problem and push your changes
 git config --global user.name "vorzawk"
 git config --global user.email 21965736+vorzawk@users.noreply.github.com
-* Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done in the repo.
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
 
 Background info:
