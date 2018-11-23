@@ -1,9 +1,27 @@
+It seems to be a undeniable need for me to have to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape
+through the internet and reinvent the wheel every time, I am making this document so that I have clear instrutions to get up and running
+quickly!
 Some general tips : creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!). So, plan accordingly and try to "optimize" the movements of the partition with the end goal in mind. Remember, a hard disk can have 4 primary partitions, one of which can be an extended partition which can be partitioned as many times as needed.
 First, use rufus to create a live usb of the latest ubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 Then,
 
-Note : XOrg is the server which is responsible for reating the graphical environment.
-* Figure out how to get the graphics working
+* Disable the nvidia drivers
+- Install the nvidia drivers and nvidia-prime, then select the intel card using prime. Log off and login to apply the changes.
+For some reason, my laptop seemed to really heat up while using 18.04. Reverting to 16.04, and using the nvidia driver version 384 and switching to intel seems to
+have solved the problem. The output of sensors shows that all temperatures are less than 50 Celsius and lsmod shows that neither the nouveau
+nor nvidia drivers are loaded.
+
+* Install vim
+  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
+  - Install vundle for the plugins
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+* Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
+* Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done in the repo.
+* Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
+
+Background info:
+* Nvidia support for ubuntu
 It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel
 and the nVidia GPUs as needed. The proprietary drivers available can only control the nvidia graphics card! The alternatives are to either
 use the open source nouveau drivers or keep both intel and nvidia cards on all the time. The open source drivers are not very good and in
@@ -11,17 +29,4 @@ both cases, the fan noise due to the overheating system is unbearable!
 One solution is to use Bumblebee which allows for running apps via optirun or primusrun so that these apps can make use of the GPU card. But
 since I don't really play any games, this is not really what I need. I can use nvidia-prime which allows for starting the XOrg session with
 either the Intel or the NVidia cards.
-- Install the nvidia drivers and nvidia-prime, then select the intel card using the command below.
-sudo prime-select intel
 
-* Install vim
-  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
-  - Install vundle for the plugins
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  - ycmd requires some extra config
-  - copy language specific setting to .vim folder
-* Get a nice wallpaper
-
-* Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
-* Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done in the repo.
-* Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend

@@ -6,9 +6,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -18,18 +15,17 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
-Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+" Make sure to run :PluginInstall inside vim to install the plugins when you run it the first time
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on   
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set textwidth=140
-" you should probably look at only one piece of code at a time, 80 is such a
-" ridiculous number
+" This is not a good textwidth for code since you'll often need to open multiple files at once.
 set autoindent
 set lbr
 " Makefiles need tabs
@@ -37,7 +33,6 @@ autocmd FileType make set noexpandtab
 " enable syntax highlighting
 let python_highlight_all=1
 syntax on 
-colorscheme CandyPaper
 " turn line numbers on
 set number
 " highlight matching [{()}]
