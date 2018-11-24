@@ -21,10 +21,14 @@ nor nvidia drivers are loaded.
   - Read through the ycm documentation carefully for instructions on how to install it, there are a lot of commands so I am not listing them here.
   - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the
     system clipboard from vim.
-* Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
-* Run the following, to overcome the publishing private email problem and push your changes
-git config --global user.name "vorzawk"
-git config --global user.email 21965736+vorzawk@users.noreply.github.com
+* Configure access to github
+  - Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every
+    time while pushing changes.
+  -  Run the following, to overcome the publishing private email problem and push your changes
+     git config --global user.name "vorzawk"
+     git config --global user.email 21965736+vorzawk@users.noreply.github.com
+* Go to Edit -> Profile Preferences to set the terminal to open in full screen
+* Get the Adblocker Plus and Google Search Keyboard Shortcut addons for Firefox
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
 
 Background info:
