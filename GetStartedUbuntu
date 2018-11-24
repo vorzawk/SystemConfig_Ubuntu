@@ -18,6 +18,7 @@ nor nvidia drivers are loaded.
   - Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done
     in one location.
   - Make sure to run :PluginInstall to install the plugins while running vim for the very first time!
+  - Read through the ycm documentation carefully for instructions on how to install it, there are a lot of commands so I am not listing them here.
   - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the
     system clipboard from vim.
 * Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.

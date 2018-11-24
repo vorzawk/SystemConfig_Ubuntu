@@ -13,8 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,6 +32,7 @@ autocmd FileType make set noexpandtab
 " enable syntax highlighting
 let python_highlight_all=1
 syntax on 
+colorscheme Revolution
 " turn line numbers on
 set number
 " highlight matching [{()}]
