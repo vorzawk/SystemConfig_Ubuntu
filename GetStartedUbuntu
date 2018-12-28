@@ -30,6 +30,7 @@ nor nvidia drivers are loaded.
 * Go to Edit -> Profile Preferences to set the terminal to open in full screen
 * Get the Adblocker Plus and Google Search Keyboard Shortcut addons for Firefox
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
+* Configure redshift to start up automatically on system startup.
 
 Background info:
 * Nvidia support for ubuntu
