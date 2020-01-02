@@ -2,6 +2,7 @@ set nocompatible              " required
 set encoding=utf-8            " its a good idea to use UTF-8 these days
 filetype off                  " required
 
+set backspace=indent,start,eol
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,9 +11,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'neoclide/coc.nvim'
+" Plugin 'scrooloose/syntastic'
 Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
@@ -27,6 +29,19 @@ set textwidth=140
 " This is not a good textwidth for code since you'll often need to open multiple files at once.
 set autoindent
 set lbr
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Makefiles need tabs
 autocmd FileType make set noexpandtab
 " enable syntax highlighting
@@ -42,16 +57,6 @@ set wildmenu
 " search as characters are entered
 set incsearch
 
-" Close autocomplete window oncw you are done with it
-let g:ycm_autoclose_preview_window_after_completion=1
-"Youcompleteme fix, make sure to include the file in ~
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" YCM even while writing comments
-let g:ycm_complete_in_comments = 1
-" Fix annoying 'do you want to load this file?' msg, just remember that ycm
-" starts with the current folder and looks for .ycm_extra_config.py
-" recursively till ~
-let g:ycm_confirm_extra_conf = 0
 au FileType perl set filetype=prolog
 " Enhanced keyboard mappings
 "
