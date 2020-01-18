@@ -13,9 +13,16 @@ call plug#begin('~/.vim/plugins')
 " It is also really easy to set up and has a ton of really neat extensions
 " which provide formatting and LSP support.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" A nice colorscheme
+Plug 'morhetz/gruvbox'
 
 call plug#end() 
 " Make sure to run :PlugInstall inside vim to install the plugins when you run it the first time
+
+" configure grovbox
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+set background=dark
 
 " Use tab for trigger completion and navigate suggestions.
 inoremap <silent><expr> <TAB>
