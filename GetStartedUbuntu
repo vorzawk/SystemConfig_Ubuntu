@@ -6,19 +6,18 @@ Some general tips : creating hard disk partitions takes a long time since every 
 First, use rufus to create a live usb of the latest ubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 Then,
 
-* Disable the nvidia drivers
-- Install the nvidia drivers and nvidia-prime, then select the intel card using prime. Log off and login to apply the changes.
+* Disable the GPU drivers
+- Disable the nouveau drivers since these since the fan makes an unbearable amount of noise when these are being used.
+- Install the nvidia drivers and nvidia-prime, then select the intel card using prime. Reboot to apply the changes.
 For some reason, my laptop seemed to really heat up while using 18.04. Reverting to 16.04, and using the nvidia driver version 384 and switching to intel seems to
 have solved the problem. The output of sensors shows that all temperatures are less than 50 Celsius and lsmod shows that neither the nouveau
 nor nvidia drivers are loaded.
 
 * Install and configure vim
-  - Install vundle for the plugins
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  - Load the vim config files from github, clone the repo into ~ and set up symlinks to each file so that all updates only need to be done
-    in one location.
-  - Make sure to run :PluginInstall to install the plugins while running vim for the very first time!
-  - Read through the ycm documentation carefully for instructions on how to install it, there are a lot of commands so I am not listing them here.
+  - Install vim-plug, a plugin manager for vim
+  - clone the repo from github into ~ and set up a symlink to the vimrc file so that the file can be backed up and updated in one location.
+  - Make sure to run :PlugInstall to install the plugins while running vim for the very first time!
+  - Install and configure the coc-prettier extension for formatting and the language server extensions as well.
   - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the
     system clipboard from vim.
 * Configure access to github

@@ -3,34 +3,21 @@ set encoding=utf-8            " its a good idea to use UTF-8 these days
 filetype off                  " required
 
 set backspace=indent,start,eol
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" use vim-plug to manage vim plugins, specify the directory where the plugins should be downloaded.
+call plug#begin('~/.vim/plugins')
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-" Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'neoclide/coc.nvim'
-" Plugin 'scrooloose/syntastic'
-Plugin 'flazz/vim-colorschemes'
+" Add all your plugins here 
+" coc provides intellisense using the Language Server concept and provides all
+" of the features that VSCode (the popular IDE) offers.
+" It is also really easy to set up and has a ton of really neat extensions
+" which provide formatting and LSP support.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-" Make sure to run :PluginInstall inside vim to install the plugins when you run it the first time
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on   
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set textwidth=140
-" This is not a good textwidth for code since you'll often need to open multiple files at once.
-set autoindent
-set lbr
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+call plug#end() 
+" Make sure to run :PlugInstall inside vim to install the plugins when you run it the first time
+
+" Use tab for trigger completion and navigate suggestions.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -44,25 +31,20 @@ endfunction
 
 " Makefiles need tabs
 autocmd FileType make set noexpandtab
-" enable syntax highlighting
-let python_highlight_all=1
-syntax on 
-colorscheme Revolution
 " turn line numbers on
 set number
-" highlight matching [{()}]
-set showmatch
 " visual autocomplete for command menu
 set wildmenu
 " search as characters are entered
 set incsearch
 
-au FileType perl set filetype=prolog
+" use :Prettier to format current buffer.
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Enhanced keyboard mappings
-"
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
-" in insert mode F2 will exit insert, save, enters insert again
+" in insert mode F2 will exit insert and save the file
 imap <F2> <ESC>:w<CR>
 
 "split navigations
@@ -72,4 +54,4 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "insert a single character
-:nnoremap <Space> i_<Esc>r
+nnoremap <Space> i_<Esc>r
