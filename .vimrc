@@ -1,64 +1,39 @@
-set nocompatible              " required
-set encoding=utf-8            " its a good idea to use UTF-8 these days
-filetype off                  " required
+" swap files are just more hassle than they are worth since you are usually switching between multiple buffers, saving before each switch.
+set noswapfile                
+" required to make backspace delete beyond the currently inserted text and over autoindent
+set backspace=start,indent     
+" Enable file type detection and do language-dependent indenting
+filetype plugin indent on 
+syntax on               " syntax highlighting
+set autoindent          " auto indenting
+set expandtab		" expand tabs with spaces
+set shiftwidth=3        " set 3 spaces for indentation as suggested by the dacore styleguide
 
-set backspace=indent,start,eol
+" set line number relative to the current line while showing the absolute number for the current line
+set number relativenumber
+" visual autocomplete for command menu
+set wildmenu
+" search as characters are entered
+set incsearch
 
 " use vim-plug to manage vim plugins, specify the directory where the plugins should be downloaded.
 call plug#begin('~/.vim/plugins')
-
 " Add all your plugins here 
-" coc provides intellisense using the Language Server concept and provides all
-" of the features that VSCode (the popular IDE) offers.
-" It is also really easy to set up and has a ton of really neat extensions
-" which provide formatting and LSP support.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " A nice colorscheme
 Plug 'morhetz/gruvbox'
 
 call plug#end() 
 " Make sure to run :PlugInstall inside vim to install the plugins when you run it the first time
 
-" configure grovbox
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
-set background=dark
-
-" Use tab for trigger completion and navigate suggestions.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Makefiles need tabs
-autocmd FileType make set noexpandtab
-" turn line numbers on
-set number
-" visual autocomplete for command menu
-set wildmenu
-" search as characters are entered
-set incsearch
-
-" use :Prettier to format current buffer.
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Enhanced keyboard mappings
-" in normal mode F2 will save the file
-nmap <F2> :w<CR>
-" in insert mode F2 will exit insert and save the file
-imap <F2> <ESC>:w<CR>
-
-"split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"insert a single character
+" insert a single character
 nnoremap <Space> i_<Esc>r
+
+" use Ctrl+p to open the fzf file search
+nnoremap gp :Files<CR>
+" use Ctrl+j to open the fzf buffer search
+nnoremap gb :Buffers<CR>
+
+" use Ctrl+u to go one page up instead of Ctrl+b to avoid clashing with tmux
+nnoremap <C-u> <C-b>
