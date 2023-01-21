@@ -1,34 +1,37 @@
-I seem to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape
-through the internet to figure things out every time, I am making this document to aggregate all instructions in one place.
+I seem to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape through the internet to figure things out every time,
+I am making this document to aggregate all instructions in one place.
 Still, make sure that you can spare a few hours, if and when you decide to upgrade!
 
 First, use rufus to create a live usb of the latest xubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 
 * Install and configure vim
   - Install vim-plug, a plugin manager for vim
-  - clone the repo from github into ~ and set up a symlink to the vimrc file so that the file can be backed up and updated in one location.
   - Make sure to run :PlugInstall to install the plugins while running vim for the very first time!
-  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the
-    system clipboard from vim.
+  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
 * Configure access to github
-  - Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every
-    time while pushing changes.
+  - Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
   -  Run the following, to overcome the publishing private email problem and push your changes
      git config --global user.name "vorzawk"
      git config --global user.email 21965736+vorzawk@users.noreply.github.com
 * Go to Edit -> Profile Preferences to set the terminal to open in full screen
-* Get the Adblocker Plus and Google Search Keyboard Shortcut addons for Firefox
+* Get the Adblocker, Blocksite and Google Search Keyboard Shortcut addons for the browser.
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
+* Remap the capslock key to ctrl, this makes using vim and tmux so much easier.
+  - Make the changes for the current session
+    setxkbmap -layout us -option ctrl:nocaps
+  - Make the changes permanent by setting XKBOPTIONS="ctrl:nocaps" in /etc/default/keyboard.
 
 Background info:
 * Nvidia support for ubuntu
-It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel
-and the nVidia GPUs as needed. The proprietary drivers available can only control the nvidia graphics card! The alternatives are to either
-use the open source nouveau drivers or keep both intel and nvidia cards on all the time. The open source drivers are not very good and in
-both cases, the fan noise due to the overheating system is unbearable!
-One solution is to use Bumblebee which allows for running apps via optirun or primusrun so that these apps can make use of the GPU card. But
-since I don't really play any games, this is not what I need.
+It looks like my n5110 laptop isn't supported well by nvidia. The problem is the Optimus technology which allows switching between the intel and the nVidia GPUs as needed.
+The proprietary drivers available can only control the nvidia graphics card! The alternatives are to either use the open source nouveau drivers or
+keep both intel and nvidia cards on all the time. The open source drivers are not very good and in both cases, the fan noise due to the overheating system is unbearable!
+One solution is to use Bumblebee which allows for running apps via optirun or primusrun so that these apps can make use of the GPU card.
+But since I don't really play any games, this is not what I need.
 Using xubuntu solved the issue completely! The fan noise is gone and the system is not over-heating anymore. It uses the default nouveau drivers and is able to use the gpu as well.
+The annoying issue where the system would just hang at startup is gone as well.
 
 Misc:
-Creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!). So, plan accordingly and try to "optimize" the movements of the partition with the end goal in mind. Remember, a hard disk can have 4 primary partitions, one of which can be an extended partition which can be partitioned as many times as needed.
+Creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!).
+So, plan accordingly and try to "optimize" the movements of the partition with the end goal in mind. Remember, a hard disk can have 4 primary partitions,
+one of which can be an extended partition which can be partitioned as many times as needed.
