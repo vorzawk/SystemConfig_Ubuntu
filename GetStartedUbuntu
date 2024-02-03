@@ -1,20 +1,15 @@
 I seem to uninstall and upgrade ubuntu versions quite often, so rather than having to scrape through the internet to figure things out every time,
-I am making this document to aggregate all instructions in one place.
-Still, make sure that you can spare a few hours, if and when you decide to upgrade!
+I am making this document to aggregate all instructions in one place. Still, make sure that you can spare a few hours, if and when you decide to upgrade!
 
 First, use rufus to create a live usb of the latest xubuntu lts ... Just keep a live usb on hand, you don't know when you may need it!
 
-* Install and configure vim
-  - Install vim-plug, a plugin manager for vim
-  - Make sure to run :PlugInstall to install the plugins while running vim for the very first time!
-  - Check vim --version | grep clipboard to see if +clipboard is available. Otherwise install vim-gnome, this is required to access the system clipboard from vim.
 * Configure access to github
   - Setup SSH access to github, coz by default the git clones use https meaning that you'll have to enter your username and password every time while pushing changes.
   -  Run the following, to overcome the publishing private email problem and push your changes
      git config --global user.name "vorzawk"
      git config --global user.email 21965736+vorzawk@users.noreply.github.com
 * Go to Edit -> Profile Preferences to set the terminal to open in full screen
-* Get the Adblocker, Blocksite and Google Search Keyboard Shortcut addons for the browser.
+* Get the Adblocker, Stayfocusd and Google Search Keyboard Shortcut addons for the browser.
 * Configure system to "sleep" when power button is pressed: gsettings set org.gnome.settings-daemon.plugins.power button-power suspend
 * Remap the capslock key to ctrl, this makes using vim and tmux so much easier.
   - Make the changes for the current session
@@ -29,7 +24,9 @@ keep both intel and nvidia cards on all the time. The open source drivers are no
 One solution is to use Bumblebee which allows for running apps via optirun or primusrun so that these apps can make use of the GPU card.
 But since I don't really play any games, this is not what I need.
 Using xubuntu solved the issue completely! The fan noise is gone and the system is not over-heating anymore. It uses the default nouveau drivers and is able to use the gpu as well.
-The annoying issue where the system would just hang at startup is gone as well.
+The annoying issue where the system would just hang at startup with Ubuntu is gone as well.
+* Monitor
+Connecting the monitor to the n5110 laptop was not a good experience as the display kept flickering and sometimes the monitor was only partly used due to the resolution not getting detected properly. There was also the loud fan noise due to the system over-heating when connected to the monitor. This was after I spent a fair bit of effort just to get the monitor detected as a display. These suggest that the xubuntu system running on this old hardware is simply unable to handle this moitor. A simple and effective solution is to not use the monitor with this machine!
 
 Misc:
 Creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!).
