@@ -22,11 +22,4 @@ alias ll='ls -hal' 	# ll outputs long form ls in human-readable format
 set -o vi			# vi mode for the terminal
 export EDITOR=vim
 alias vim='~/nvim.appimage'	# neovim as vim
-
-# Common aliases
-alias gs='git status'
-alias gl='git log'
-alias gp='git pull'
-alias di='docker images'
-
 source /usr/share/doc/fzf/examples/key-bindings.bash # key-bindings for fzf

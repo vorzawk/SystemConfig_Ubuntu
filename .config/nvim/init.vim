@@ -10,7 +10,6 @@ set expandtab		" expand tabs with spaces
 "set shiftwidth=2        " set 2 spaces for indentation since this is what works best with webviz
 "set shiftwidth=4        " set 4 spaces for indentation since this is what is followed with the momenta code
 set shiftwidth=3        " set 3 spaces for indentation since this is what is suggested in the dacore style guide
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " disable automatic comment insertion
 
 " show partial command
 set showcmd            
@@ -18,7 +17,7 @@ set showcmd
 set number
 " Use folds to ensure that you are not bombarded with info as soon as you open a file
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=3
 
 " search as characters are entered
 set incsearch
@@ -37,11 +36,15 @@ call plug#end()
 
 " LSP
 lua require('lsp')
+" stop LSP for the current buffer
+nnoremap <F2> :LspStop<CR>    
+" avoid shifting text while receiving lsp diagnostics
+set signcolumn=yes
 
-" insert a single character
-nnoremap <Space> i_<Esc>r
+" space as leader
+let mapleader=' '
 
-" use g followed by p to open the fzf file search
-nnoremap gp :Files<CR>
-" use g followed by b to open the fzf buffer search
-nnoremap gb :Buffers<CR>
+" fzf file search
+nnoremap <Leader>k :Files<CR>
+" fzf buffer search
+nnoremap <Leader>l :Buffers<CR>

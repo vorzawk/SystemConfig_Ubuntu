@@ -26,7 +26,7 @@ But since I don't really play any games, this is not what I need.
 Using xubuntu solved the issue completely! The fan noise is gone and the system is not over-heating anymore. It uses the default nouveau drivers and is able to use the gpu as well.
 The annoying issue where the system would just hang at startup with Ubuntu is gone as well.
 * Monitor
-Connecting the monitor to the n5110 laptop was not a good experience as the display kept flickering and sometimes the monitor was only partly used due to the resolution not getting detected properly. There was also the loud fan noise due to the system over-heating when connected to the monitor. This was after I spent a fair bit of effort just to get the monitor detected as a display. These suggest that the xubuntu system running on this old hardware is simply unable to handle this moitor. A simple and effective solution is to not use the monitor with this machine!
+Connecting the monitor to the n5110 laptop was not a good experience as the display kept flickering and sometimes the monitor was only partly used due to the resolution not getting detected properly. There was also the loud fan noise due to the system over-heating when connected to the monitor. This was after I spent a fair bit of effort just to get the monitor detected as a display. These suggest that the xubuntu system running on this old hardware is simply unable to handle this monitor. A simple and effective solution is to not use the monitor with this machine!
 
 Misc:
 Creating hard disk partitions takes a long time since every byte has to be copied in order (at least that's what GParted does!).
